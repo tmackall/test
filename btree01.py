@@ -11,8 +11,6 @@ class Node(object):
         self.data = data
         self.right = None
         self.left = None
-    #def find(self):
-    #def delete(self):
 
     def get_left(self):
         return self.left
@@ -38,20 +36,33 @@ class Node(object):
             else:
                 self.right.add(data)
 
+def print_tree_pre(cls):
+    if cls is not None:
+        print cls.get_data()
+        print_tree_pre(cls.get_left())
+        print_tree_pre(cls.get_right())
 
-def print_tree(node):
+
+def print_tree_post(node):
     if node is not None:
-        print_tree(node.get_left())
+        print_tree_post(node.get_right())
         print node.get_data()
-        print_tree(node.get_right())
+        print_tree_post(node.get_left())
+
+def print_tree_in(node):
+    if node is not None:
+        print_tree_in(node.get_left())
+        print node.get_data()
+        print_tree_in(node.get_right())
 
 #
 # create the initial node object
 node = Node(5)
-
 node.add(4)
 node.add(3)
 node.add(2)
 node.add(6)
 node.add(7)
-print_tree(node)
+print_tree_in(node)
+print_tree_post(node)
+print_tree_pre(node)
