@@ -36,6 +36,7 @@ class Node(object):
             else:
                 self.right.add(data)
 
+
 def print_tree_pre(cls):
     if cls is not None:
         print cls.get_data()
@@ -48,6 +49,7 @@ def print_tree_post(node):
         print_tree_post(node.get_right())
         print node.get_data()
         print_tree_post(node.get_left())
+
 
 def print_tree_in(node):
     if node is not None:
@@ -66,3 +68,5 @@ node.add(7)
 print_tree_in(node)
 print_tree_post(node)
 print_tree_pre(node)
+print type(node)
+print __name__
