@@ -37,11 +37,12 @@ class Node(object):
                 self.right.add(data)
 
 
-def print_tree_pre(cls):
-    if cls is not None:
-        print cls.get_data()
-        print_tree_pre(cls.get_left())
-        print_tree_pre(cls.get_right())
+    @classmethod
+    def print_tree(cls, node):
+        if node is not None:
+            cls.print_tree(node.get_left())
+            print node.get_data()
+            cls.print_tree(node.get_right())
 
 
 def print_tree_post(node):
@@ -57,16 +58,12 @@ def print_tree_in(node):
         print node.get_data()
         print_tree_in(node.get_right())
 
-#
 # create the initial node object
-node = Node(5)
-node.add(4)
-node.add(3)
-node.add(2)
-node.add(6)
-node.add(7)
-print_tree_in(node)
-print_tree_post(node)
-print_tree_pre(node)
-print type(node)
+num_elements = 100
+node = Node(num_elements/2)
+for i in range(num_elements):
+    node.add(i+1)
+
+Node.print_tree(node)
+print type(node.print_tree)
 print __name__
