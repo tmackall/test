@@ -33,6 +33,12 @@ class node(object):
             if self.right is not None:
                 return self.right.find(val)
 
+    def __iter__(self):
+        return self.val
+
+    def __next__(self):
+        return self.right.val
+
     @classmethod
     def nprint(cls, node):
         if node.left is not None:
@@ -61,5 +67,7 @@ if __name__ == '__main__':
         n.add(random.randint(1, 100))
 
     node.nprint(n)
+    for i in node:
+        print i
     print node.find_depth(n)
     # print n.find(25)
