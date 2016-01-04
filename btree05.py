@@ -68,6 +68,39 @@ class treeb(object):
         if node.noder is not None:
             cls.print_tree(node.noder)
 
+    @classmethod
+    def print_tree_in_order(cls, node):
+        print node.data
+        if node.nodel is not None:
+            cls.print_tree_in_order(node.nodel)
+        if node.noder is not None:
+            cls.print_tree_in_order(node.noder)
+
+    @classmethod
+    def get_max_depth(cls, root):
+        if root is None:
+            return 0
+        return max(cls.get_max_depth(root.nodel), cls.get_max_depth(root.noder))+1
+
+    @classmethod
+    def get_max_depth_i(cls, root):
+        if root == None:
+            return 0
+        stack_node = [root];
+        stack_depth = [1];
+        depth_max = 0;
+        while len(stack_node)>0:
+            node = stack_node.pop();
+            depth = stack_depth.pop();
+            depth_max = depth_max if depth_max > depth else depth
+            if node.nodel != None:
+                stack_node.append(node.nodel)
+                stack_depth.append(depth+1)
+            if node.noder != None:
+                stack_node.append(node.noder)
+                stack_depth.append(depth+1)
+        return depth_max
+
 #    @classmethod
 #    def get_max_depth(cls, node):
 #        stackt = []
@@ -112,9 +145,10 @@ if __name__ == "__main__":
         val = randint(1, size)
         print val
         if t.check_exists(val) is False:
-            t.addi(val)
+            t.add(val)
             cnt += 1
         if cnt >= int(size / 2):
             done = True
 
-    treeb.print_tree(t)
+    treeb.print_tree_in_order(t)
+    print 'tree depth: {}'.format(treeb.get_max_depth_i(t))
