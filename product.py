@@ -8,8 +8,9 @@ list_tots = []
 for i in xrange(len(list_nums)):
     tmp = list_nums.pop(i)
     tot = 1
-    for j in list_nums:
-        tot *= j
+    #
+    # the reduce() will multiply each element with the next
+    tot = reduce(lambda x, y: x*y, list_nums)
     list_tots.append(tot)
     list_nums.insert(i, tmp)
 
