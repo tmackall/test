@@ -4,21 +4,20 @@ class node(object):
     def __init__(self, data_in):
         self.data = data_in
         self.next = None
+        self.prev = None
 
 class llist(object):
     def __init__(self):
         self.head = None
         self.tail = None
+        self.node = None
 
-    def insert(self, item):
-        self.tail.next = item
-        self.tail = item
+    def insert(self, node_in):
+        self.tail.next = node_in
+        self.tail = node_in
         if self.head is None:
-           self.head = item
+           self.head = node_in
         return
-
-    def print(self):
-        while self.next is not None:
 
 
 
