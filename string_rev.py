@@ -12,11 +12,11 @@ def string_rev(in_string):
 
     return ret_string
 
+if __name__ == '__main__':
 
-a = "123456"
-print a[::-1]
-print a[0:3]
-print a[::-1]
-print a[:-2]
-
-
+    a = "123456"
+    print a[::-1]
+    print a[0:3]
+    print a[::-1]
+    print a[:-2]
+    exit(0)
