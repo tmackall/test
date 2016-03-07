@@ -2,6 +2,11 @@
 
 import re
 
+'''
+Find the largest substring palindrome in a given string.
+ex: input: abbac output: abba
+'''
+
 
 def palindrome_check(str_in):
 
@@ -11,7 +16,6 @@ def palindrome_check(str_in):
     # non-alpha - remove
     str_test = re.sub('[^a-z]', '', str_test)
 
-    print str_test
     palindrome = ''
     # window start loop
     for wst in xrange(len(str_test)):
@@ -24,7 +28,6 @@ def palindrome_check(str_in):
             bwd = fwd[::-1]
             if bwd == fwd and len(bwd) > len(pal_tmp):
                 pal_tmp = bwd
-                print '%s:%s' % (fwd, bwd)
 
         if len(pal_tmp) > len(palindrome):
             palindrome = pal_tmp
@@ -32,11 +35,15 @@ def palindrome_check(str_in):
     return palindrome
 
 
-tsl = []
-tsl.append('SDLsdswekjui8t')
-tsl.append('SD8Lsd')
-tsl.append('Uabba')
-tsl.append('A man, a plan, a canal, Panama!')
-tsl.append('No \'x\' in NixonR')
-for ts in tsl:
-    print 'input: %s, largest palindrome: %s' % (ts, palindrome_check(ts))
+if __name__ == '__main__':
+    tsl = []
+    tsl.append('SDLsdswekjui8t')
+    tsl.append('SD8Lsd')
+    tsl.append('Uabba')
+    tsl.append('A man, a plan, a canal, Panama!')
+    tsl.append('No \'x\' in NixonR')
+    for ts in tsl:
+        print ('input: %s ====== largest palindrome: %s' %
+               (ts, palindrome_check(ts)))
+
+    exit(0)
