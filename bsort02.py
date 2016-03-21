@@ -2,6 +2,7 @@
 
 import random
 
+
 def bsort(unsorted_list):
     '''
     bsort() - bubble sort n**2
@@ -16,7 +17,6 @@ def bsort(unsorted_list):
                 tmp = unsorted_list[i+1]
                 unsorted_list[i+1] = unsorted_list[i]
                 unsorted_list[i] = tmp
-
 
 
 size = 100

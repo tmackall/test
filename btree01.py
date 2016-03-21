@@ -6,7 +6,9 @@ ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
 LOGGER.addHandler(ch)
 
+
 class Node(object):
+
     def __init__(self, data):
         self.data = data
         self.right = None
@@ -36,7 +38,6 @@ class Node(object):
             else:
                 self.right.add(data)
 
-
     @classmethod
     def print_tree(cls, node):
         if node is not None:
@@ -57,6 +58,7 @@ def print_tree_in(node):
         print_tree_in(node.get_left())
         print node.get_data()
         print_tree_in(node.get_right())
+
 
 # create the initial node object
 num_elements = 100
